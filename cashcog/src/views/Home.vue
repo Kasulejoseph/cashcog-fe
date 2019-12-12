@@ -16,12 +16,11 @@
         />
       </div>
     </v-app-bar>
-
     <v-content>
       <HelloWorld/>
     </v-content>
     <div :key="item.id" v-for="item in expenses.data">
-      <ExpenseCard :employee="employee(item.employee)" :currency="item.currency + ' ' + item.amount" :description="item.description" :created_at="new Date(item.created_at).toLocaleString()" ></ExpenseCard>
+      <ExpenseCard :employee="item.employee.first_name" :currency="item.currency + ' ' + item.amount" :description="item.description" :created_at="new Date(item.created_at).toLocaleString()" ></ExpenseCard>
       <br/>
     </div>
   </v-app>
@@ -37,12 +36,6 @@ export default {
   components: {
     HelloWorld,
     ExpenseCard
-  },
-  methods: {
-    employee(id) {
-      this.$store.dispatch('GET_EMPLOYEE', id)
-      // return this.$store.getters.GET_EMPLOYEE[0].first_name
-    }
   },
   computed: {
     expenses () { return this.$store.getters.GET_EXPENSES}
