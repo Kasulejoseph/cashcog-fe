@@ -20,17 +20,20 @@
     <v-content>
       <HelloWorld/>
     </v-content>
+    <ExpenseCard></ExpenseCard><ExpenseCard></ExpenseCard>
   </v-app>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import ExpenseCard from '@/components/ExpenseCard'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    HelloWorld,
+    ExpenseCard
   }
 }
 </script>
