@@ -20,7 +20,9 @@
     <v-content>
       <HelloWorld/>
     </v-content>
-    <ExpenseCard></ExpenseCard><ExpenseCard></ExpenseCard>
+    <div :key="item.id" v-for="item in items">
+      <ExpenseCard :currency="item.currency" :description="item.description" ></ExpenseCard>
+    </div>
   </v-app>
 </template>
 
@@ -34,6 +36,16 @@ export default {
   components: {
     HelloWorld,
     ExpenseCard
+  },
+  data: () => {
+    return {
+      items: 
+      [
+        {id: 1, currency: "shs 700", description: "Greyhound divisely hello coldly fonwderfully"}, 
+        {id: 2, currency: "USD 600", description: "Greyhound divisely hello coldly fonwderfully"}
+        ]
+      }
+
   }
 }
 </script>
