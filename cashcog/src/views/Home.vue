@@ -20,8 +20,8 @@
     <v-content>
       <HelloWorld/>
     </v-content>
-    <div :key="item.id" v-for="item in items">
-      <ExpenseCard :currency="item.currency" :description="item.description" ></ExpenseCard>
+    <div :key="item.id" v-for="item in expenses.data">
+      <ExpenseCard :currency="item.currency + ' ' + item.amount " :description="item.description" :created_at="new Date(item.created_at).toLocaleString()" ></ExpenseCard>
     </div>
   </v-app>
 </template>
@@ -45,7 +45,13 @@ export default {
         {id: 2, currency: "USD 600", description: "Greyhound divisely hello coldly fonwderfully"}
         ]
       }
+  },
+  computed: {
+    expenses () { return this.$store.getters.GET_EXPENSES}
 
+  },
+  created() {
+    this.$store.dispatch('GET_EXPENSES')
   }
 }
 </script>

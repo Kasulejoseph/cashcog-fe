@@ -16,7 +16,7 @@
 
     <v-card-actions >
       <v-spacer></v-spacer>
-      <span class="text-sm-left">12/12/2009</span>
+      <span class="text-sm-left" v-text="created_at">12/12/2009</span>
     </v-card-actions>
   </v-card>
 </template>
@@ -24,7 +24,7 @@
 <script>
   export default {
     name: "ExpenseCard",
-    props: ['currency', 'description'],
+    props: ['currency', 'description', 'created_at'],
     data () {
       return {
         switch1: false,
