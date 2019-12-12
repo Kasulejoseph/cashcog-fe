@@ -38,18 +38,10 @@ export default {
     HelloWorld,
     ExpenseCard
   },
-  data: () => {
-    return {
-      items: 
-      [
-        {id: 1, currency: "shs 700", description: "Greyhound divisely hello coldly fonwderfully"}, 
-        {id: 2, currency: "USD 600", description: "Greyhound divisely hello coldly fonwderfully"}
-        ]
-      }
-  },
   methods: {
     employee(id) {
-      return id
+      this.$store.dispatch('GET_EMPLOYEE', id)
+      // return this.$store.getters.GET_EMPLOYEE[0].first_name
     }
   },
   computed: {
