@@ -18,10 +18,10 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    GET_EXPENSES: ({commit}) => {
-      axios.get('https://cashcog.herokuapp.com/')
+    GET_EXPENSES: ({commit}, query) => {
+      const queryParam = query == undefined ? '' : query      
+      axios.get(`https://cashcog.herokuapp.com/${queryParam}`)
       .then((response) => {
-        // console.log(response);
         commit('SET_EXPENSES', response.data)
         
       })

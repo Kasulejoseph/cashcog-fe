@@ -23,13 +23,12 @@
           chips
           deletable-chips
           class="tag-input"
-          :search-input.sync="search"
-          @keyup.tab="updateTags"
-          @paste="updateTags"
+          @keyup.enter="updateTags"
         >
         </v-combobox>
       </v-col>
     </v-row>
+    {{select}}
   </div>
 </template>
 
@@ -37,11 +36,22 @@
 import Multiselect from "vue-multiselect";
 export default {
   name: "MultiSelect",
-  props: ["options", "addTag", "value"],
+  props: ["options", "value", "search"],
+   data() {
+    return {
+      select: []
+    };
+  },
+  methods: {
+    addTag() {
+
+    },
+    updateTags(){
+      this.$emit('updateTags', this.select)
+    }
+  },
   components: { Multiselect }
-  //   mounted() {
-  //           this.$emit('tag', this.value)
-  //   }
+
 };
 </script>
 

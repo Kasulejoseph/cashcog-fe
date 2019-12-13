@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MultiSelect :options="options" :value="value" @tag="addTag" />
+    <MultiSelect :options="options" :value="value" @tag="addTag" @updateTags="updateTags" />
   </div>
 </template>
 
@@ -10,28 +10,41 @@ export default {
   name: "SelectView",
   data() {
     return {
+      select: [],
+      items: [],
+      search: "", //sync search
       value: [{ name: "Status", code: "js" }],
       options: [
         { name: "Currency", code: "vu" },
         { name: "Amount", code: "js" },
         { name: "status", code: "os" },
-        {name: "Employee", code: "os" }
+        { name: "Employee", code: "os" }
       ]
     };
   },
   components: {
     MultiSelect
   },
-    methods: {
-    addTag (newTag) {        
+  methods: {
+    addTag(newTag) {
       const tag = {
         name: newTag,
-        code: newTag.substring(0, 2) + Math.floor((Math.random() * 10000000))
-      }
-      this.options.push(tag)
-      this.value.push(tag)
+        code: newTag.substring(0, 2) + Math.floor(Math.random() * 10000000)
+      };
+      this.options.push(tag);
+      this.value.push(tag);
+    },
+    updateTags(select) {
+      console.log("sfdgcvy", select);
+
+      // this.$nextTick(() => {
+      //   this.select.push(...this.search.split(","));
+      //   this.$nextTick(() => {
+      //     this.search = "";
+      //   });
+      // });
     }
-  },
+  }
 };
 </script>
 
