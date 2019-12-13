@@ -2,19 +2,16 @@
   <div>
     <v-row>
       <v-col cols="6" md="6" sm="0" class="mp-5">
-    <MultiSelect :options="options" @addTag="addTag"/>
+    <MultiSelect :options="options" @addTag="addTag" />
       </v-col>
       <v-col cols="6" md="6" sm="0">
-      <ComboBox @updateTags="updateTags"  />
+      <combobox @updateTags="updateTags"></combobox>
       </v-col>
     </v-row>
   </div>
 </template>
 
 <script>
-import MultiSelect from "@/components/SearchExpenses/MultiSelect";
-import ComboBox from "@/components/SearchExpenses/ComboBox"
-
 export default {
   name: "SelectView",
   data() {
@@ -31,8 +28,8 @@ export default {
     };
   },
   components: {
-    MultiSelect,
-    ComboBox
+    MultiSelect: () => import(/* webpackChunkName: "multiselect" */ '@/components/SearchExpenses/MultiSelect'),
+    combobox: () => import(/* webpackChunkName: "combobox" */ "@/components/SearchExpenses/ComboBox")
   },
   methods: {
     addTag(newTag) {

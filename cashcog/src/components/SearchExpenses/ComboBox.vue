@@ -17,7 +17,7 @@
 <script>
 
 export default {
-  name: "ComboBox",
+  name: "combobox",
   data() {
     return {
       select: [],

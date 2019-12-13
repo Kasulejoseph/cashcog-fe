@@ -32,16 +32,12 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-import ExpenseCard from "@/components/ExpenseCard";
-import SelectView from "@/views/SelectView"
 export default {
   name: "home",
   components: {
-    HelloWorld,
-    ExpenseCard,
-    SelectView
+    HelloWorld: () => import("@/components/HelloWorld.vue"),
+    ExpenseCard: () => import(/* webpackChunkName: "ExpenseCard" */ "@/components/ExpenseCard"),
+    SelectView: () => import(/* webpackChunkName: "SelectView" */ "@/views/SelectView")
   },
   computed: {
     expenses() {
