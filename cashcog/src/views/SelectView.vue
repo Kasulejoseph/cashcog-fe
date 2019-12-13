@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-row>
-      <v-col cols="6" md="6" sm="0" class="mp-5">
+    <v-row class="container2">
+      <v-col cols="6" md="6" sm="0" class="mp-5 mr-5 multi-select">
     <MultiSelect :options="options" @addTag="addTag" />
       </v-col>
-      <v-col cols="6" md="6" sm="0">
+      <v-col cols="6" md="6" sm="0" class=" ml-3 update-tag">
       <combobox @updateTags="updateTags"></combobox>
       </v-col>
     </v-row>
@@ -51,4 +51,19 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.container2 {
+  display: -webkit-box;
+}
+.multi-select{
+  margin-left: 20px;
+  width: 47%;
+}
+.update-tag{
+  width: 48%;
+
+}
+.v-input {
+    max-width: 90% !important;
+}
+</style>
