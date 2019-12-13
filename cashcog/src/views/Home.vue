@@ -14,30 +14,30 @@
     </v-app-bar>
     <v-content>
       <HelloWorld />
+      <div>
+        <SelectView />
+      </div>
     </v-content>
     <v-row>
-        <v-col :key="item.id" v-for="item in expenses.data" cols="6" md="6" sm="0">
-          <ExpenseCard
-            :employee="item.employee.first_name"
-            :currency="item.currency + ' ' + item.amount"
-            :description="item.description"
-            :created_at="new Date(item.created_at).toLocaleString()"
-          ></ExpenseCard>
-        </v-col>
+      <v-col :key="item.id" v-for="item in expenses.data" cols="6" md="6" sm="0">
+        <ExpenseCard
+          :employee="item.employee.first_name"
+          :currency="item.currency + ' ' + item.amount"
+          :description="item.description"
+          :created_at="new Date(item.created_at).toLocaleString()"
+        ></ExpenseCard>
+      </v-col>
     </v-row>
   </v-app>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-import ExpenseCard from "@/components/ExpenseCard";
-
 export default {
   name: "home",
   components: {
-    HelloWorld,
-    ExpenseCard
+    HelloWorld: () => import("@/components/HelloWorld.vue"),
+    ExpenseCard: () => import(/* webpackChunkName: "ExpenseCard" */ "@/components/ExpenseCard"),
+    SelectView: () => import(/* webpackChunkName: "SelectView" */ "@/views/SelectView")
   },
   computed: {
     expenses() {
