@@ -26,7 +26,7 @@
           chips
           deletable-chips
           class="tag-input"
-          @keyup.enter="updateTags"
+          @input="updateTags"
         >
         </v-combobox>
       </v-col>
@@ -49,7 +49,7 @@ export default {
     addTag() {      
        this.$emit('addTag', this.value)
     },
-    updateTags(){
+    updateTags(){      
       this.$emit('updateTags', this.select)
     }
   },

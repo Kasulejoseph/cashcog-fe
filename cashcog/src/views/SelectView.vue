@@ -26,24 +26,22 @@ export default {
   },
   methods: {
     addTag(newTag) {
-      this.searchKeys = [...newTag]
+      this.searchKeys = [...newTag];
     },
     updateTags(select) {
-        const searchValue = Object.assign({}, [...select])
-        const selectArray = [...select]
-        let searchQuery = ''
-        for(let key in selectArray) {
-          this.searchKeys[key].code = selectArray[key]
-          searchQuery +=  `${this.searchKeys[key].name.toLowerCase()}=${this.searchKeys[key].code}&`
-
-        }
-
-        this.$store.dispatch('GET_EXPENSES', `?${searchQuery}`)
-
+      const searchValue = Object.assign({}, [...select]);
+      const selectArray = [...select];
+      let searchQuery = "";
+      for (let key in selectArray) {
+        this.searchKeys[key].code = selectArray[key];
+        searchQuery += `${this.searchKeys[key].name.toLowerCase()}=${
+          this.searchKeys[key].code
+        }&`;
+      }
+      this.$store.dispatch("GET_EXPENSES", `?${searchQuery}`);
     }
   }
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
