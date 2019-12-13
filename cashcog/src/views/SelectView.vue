@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MultiSelect :options="options" :value="value" @tag="addTag" @updateTags="updateTags" />
+    <MultiSelect :options="options" @addTag="addTag" @updateTags="updateTags" />
   </div>
 </template>
 
@@ -12,13 +12,12 @@ export default {
     return {
       select: [],
       items: [],
-      search: "", //sync search
-      value: [{ name: "Status", code: "js" }],
+      searchKeys: [],
       options: [
-        { name: "Currency", code: "vu" },
-        { name: "Amount", code: "js" },
-        { name: "status", code: "os" },
-        { name: "Employee", code: "os" }
+        { name: "Currency", code: "00" },
+        { name: "Amount", code: "01" },
+        { name: "status", code: "02" },
+        { name: "Employee", code: "03" }
       ]
     };
   },
@@ -27,16 +26,13 @@ export default {
   },
   methods: {
     addTag(newTag) {
-      const tag = {
-        name: newTag,
-        code: newTag.substring(0, 2) + Math.floor(Math.random() * 10000000)
-      };
-      this.options.push(tag);
-      this.value.push(tag);
+      this.searchKeys = [...newTag]
     },
     updateTags(select) {
         const searchValue = Object.assign({}, [...select])
-        this.$store.dispatch('GET_EXPENSES', `?amount=${searchValue[0]}`)
+        console.log(this.searchKeys);
+        
+        // this.$store.dispatch('GET_EXPENSES', `?amount=${searchValue[0]}`)
     }
   }
 };

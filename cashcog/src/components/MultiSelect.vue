@@ -8,10 +8,13 @@
           placeholder="Search expenses"
           label="name"
           track-by="code"
+          :hide-selected="true"
+          :clear-on-select="false"
+          :close-on-select="false"
           :options="options"
           :multiple="true"
           :taggable="true"
-          @tag="addTag"
+          @input="addTag"
         ></multiselect>
       </v-col>
       <v-col cols="6" md="6" sm="0">
@@ -28,7 +31,7 @@
         </v-combobox>
       </v-col>
     </v-row>
-    {{select}}
+    {{value}}
   </div>
 </template>
 
@@ -36,15 +39,16 @@
 import Multiselect from "vue-multiselect";
 export default {
   name: "MultiSelect",
-  props: ["options", "value", "search"],
+  props: ["options", "search"],
    data() {
     return {
-      select: []
+      select: [],
+      value: []
     };
   },
   methods: {
-    addTag() {
-
+    addTag() {      
+       this.$emit('addTag', this.value)
     },
     updateTags(){
       this.$emit('updateTags', this.select)
