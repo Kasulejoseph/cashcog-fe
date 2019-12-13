@@ -35,14 +35,8 @@ export default {
       this.value.push(tag);
     },
     updateTags(select) {
-      console.log("sfdgcvy", select);
-
-      // this.$nextTick(() => {
-      //   this.select.push(...this.search.split(","));
-      //   this.$nextTick(() => {
-      //     this.search = "";
-      //   });
-      // });
+        const searchValue = Object.assign({}, [...select])
+        this.$store.dispatch('GET_EXPENSES', `?amount=${searchValue[0]}`)
     }
   }
 };
