@@ -31,7 +31,6 @@
         </v-combobox>
       </v-col>
     </v-row>
-    {{value}}
   </div>
 </template>
 
