@@ -30,9 +30,11 @@ export default {
     },
     updateTags(select) {
         const searchValue = Object.assign({}, [...select])
+        const selectArray = [...select]
+        for(let key in selectArray) {
+          this.searchKeys[key].code = selectArray[key]
+        }
         console.log(this.searchKeys);
-        
-        // this.$store.dispatch('GET_EXPENSES', `?amount=${searchValue[0]}`)
     }
   }
 };
