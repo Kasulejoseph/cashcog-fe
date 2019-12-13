@@ -10,11 +10,12 @@ export default {
   name: "SelectView",
   data() {
     return {
-      value: [{ name: "Javascript", code: "js" }],
+      value: [{ name: "Status", code: "js" }],
       options: [
-        { name: "Vue.js", code: "vu" },
-        { name: "Javascript", code: "js" },
-        { name: "Open Source", code: "os" }
+        { name: "Currency", code: "vu" },
+        { name: "Amount", code: "js" },
+        { name: "status", code: "os" },
+        {name: "Employee", code: "os" }
       ]
     };
   },

@@ -5,7 +5,7 @@
         <multiselect
           v-model="value"
           tag-placeholder="Add this as new tag"
-          placeholder="Search or add a tag"
+          placeholder="Search expenses"
           label="name"
           track-by="code"
           :options="options"
