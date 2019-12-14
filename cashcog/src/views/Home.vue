@@ -27,6 +27,15 @@
           :created_at="new Date(item.created_at).toLocaleString()"
         ></ExpenseCard>
       </v-col>
+      <v-pagination
+        v-model="page"
+        class="my-4 page-item"
+        @input="input"
+        :length="15"
+        :total-visible="7"
+        next-icon="mdi-menu-right"
+        prev-icon="mdi-menu-left"
+      ></v-pagination>
     </v-row>
   </v-app>
 </template>
@@ -34,10 +43,17 @@
 <script>
 export default {
   name: "home",
+  data() {
+    return {
+      page: 1
+    };
+  },
   components: {
     HelloWorld: () => import("@/components/HelloWorld.vue"),
-    ExpenseCard: () => import(/* webpackChunkName: "ExpenseCard" */ "@/components/ExpenseCard"),
-    SelectView: () => import(/* webpackChunkName: "SelectView" */ "@/views/SelectView")
+    ExpenseCard: () =>
+      import(/* webpackChunkName: "ExpenseCard" */ "@/components/ExpenseCard"),
+    SelectView: () =>
+      import(/* webpackChunkName: "SelectView" */ "@/views/SelectView")
   },
   computed: {
     expenses() {
@@ -49,3 +65,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.v-pagination > li .v-pagination__item--active {
+  background: rgb(248, 197, 69) !important;
+}
+</style>
