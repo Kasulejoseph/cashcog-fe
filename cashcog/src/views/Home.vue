@@ -25,6 +25,9 @@
           :currency="item.currency + ' ' + item.amount"
           :description="item.description"
           :created_at="new Date(item.created_at).toLocaleString()"
+          :passStatus="item.status"
+          :item="item"
+          @updateStatus="updateStatus"
         ></ExpenseCard>
       </v-col>
       <v-pagination
@@ -57,8 +60,11 @@ export default {
   },
   methods: {
     next(value) {
-      const searchQuery = `${this.$store.state.searchParams}page=${value}`
+      const searchQuery = `${this.$store.state.searchParams}page=${value}`;
       this.$store.dispatch("GET_EXPENSES", `?${searchQuery}`);
+    },
+    updateStatus(statusObj) {
+      this.$store.dispatch("UPDATE_EXPENSE", statusObj);
     }
   },
   computed: {
@@ -66,7 +72,7 @@ export default {
       return this.$store.getters.GET_EXPENSES;
     },
     pageCount() {
-      return this.expenses.pages
+      return this.expenses.pages;
     }
   },
   created() {
