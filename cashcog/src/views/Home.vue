@@ -19,7 +19,7 @@
       </div>
     </v-content>
     <v-row>
-      <v-col :key="item.id" v-for="item in expenses.data" cols="6" md="6" sm="0">
+      <v-col :key="item.id" v-for="item in expenses.data" cols="4" md="4" sm="0">
         <ExpenseCard
           :employee="item.employee.first_name"
           :currency="item.currency + ' ' + item.amount"
