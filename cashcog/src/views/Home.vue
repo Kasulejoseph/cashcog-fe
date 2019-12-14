@@ -19,7 +19,7 @@
       </div>
     </v-content>
     <v-row>
-      <v-col :key="item.id" v-for="item in expenses.data" cols="6" md="6" sm="0">
+      <v-col :key="item.id" v-for="item in expenses.data" cols="4" md="4" sm="0">
         <ExpenseCard
           :employee="item.employee.first_name"
           :currency="item.currency + ' ' + item.amount"
@@ -27,6 +27,15 @@
           :created_at="new Date(item.created_at).toLocaleString()"
         ></ExpenseCard>
       </v-col>
+      <v-pagination
+        v-model="page"
+        class="my-4 page-item"
+        :length="pageCount"
+        :total-visible="10"
+        next-icon="mdi-menu-right"
+        prev-icon="mdi-menu-left"
+        @input="next"
+      ></v-pagination>
     </v-row>
   </v-app>
 </template>
@@ -34,14 +43,30 @@
 <script>
 export default {
   name: "home",
+  data() {
+    return {
+      page: 1
+    };
+  },
   components: {
     HelloWorld: () => import("@/components/HelloWorld.vue"),
-    ExpenseCard: () => import(/* webpackChunkName: "ExpenseCard" */ "@/components/ExpenseCard"),
-    SelectView: () => import(/* webpackChunkName: "SelectView" */ "@/views/SelectView")
+    ExpenseCard: () =>
+      import(/* webpackChunkName: "ExpenseCard" */ "@/components/ExpenseCard"),
+    SelectView: () =>
+      import(/* webpackChunkName: "SelectView" */ "@/views/SelectView")
+  },
+  methods: {
+    next(value) {
+      const searchQuery = `page=${value}`
+      this.$store.dispatch("GET_EXPENSES", `?${searchQuery}`);
+    }
   },
   computed: {
     expenses() {
       return this.$store.getters.GET_EXPENSES;
+    },
+    pageCount() {
+      return this.expenses.pages
     }
   },
   created() {
@@ -49,3 +74,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.v-pagination > li .v-pagination__item--active {
+  background: rgb(248, 197, 69) !important;
+}
+</style>
