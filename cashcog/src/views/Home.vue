@@ -30,11 +30,11 @@
       <v-pagination
         v-model="page"
         class="my-4 page-item"
-        @input="input"
-        :length="15"
-        :total-visible="7"
+        :length="pageCount"
+        :total-visible="10"
         next-icon="mdi-menu-right"
         prev-icon="mdi-menu-left"
+        @input="next"
       ></v-pagination>
     </v-row>
   </v-app>
@@ -55,9 +55,18 @@ export default {
     SelectView: () =>
       import(/* webpackChunkName: "SelectView" */ "@/views/SelectView")
   },
+  methods: {
+    next(value) {
+      const searchQuery = `page=${value}`
+      this.$store.dispatch("GET_EXPENSES", `?${searchQuery}`);
+    }
+  },
   computed: {
     expenses() {
       return this.$store.getters.GET_EXPENSES;
+    },
+    pageCount() {
+      return this.expenses.pages
     }
   },
   created() {
