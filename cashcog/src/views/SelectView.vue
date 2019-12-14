@@ -45,6 +45,7 @@ export default {
           this.searchKeys[key].code
         }&`;
       }
+      this.$store.commit('SET_SEARCH_PARAMS', searchQuery)      
       this.$store.dispatch("GET_EXPENSES", `?${searchQuery}`);
     }
   }

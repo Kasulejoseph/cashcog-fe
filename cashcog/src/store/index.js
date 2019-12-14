@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     expenses: [],
-    employee: []
+    employee: [],
+    searchParams: ""
   },
   mutations: {
     SET_EXPENSES(state, expense) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     },
     SET_EMPLOYEE(state, employee) {
       state.employee = employee
+    },
+    SET_SEARCH_PARAMS(state, param) {      
+      state.searchParams = param
     }
   },
   actions: {

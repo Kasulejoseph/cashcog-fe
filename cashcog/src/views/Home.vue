@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     next(value) {
-      const searchQuery = `page=${value}`
+      const searchQuery = `${this.$store.state.searchParams}page=${value}`
       this.$store.dispatch("GET_EXPENSES", `?${searchQuery}`);
     }
   },
