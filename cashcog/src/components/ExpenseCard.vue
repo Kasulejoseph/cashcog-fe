@@ -12,7 +12,7 @@
         <span class="mb-2 mt-3"></span>
         <v-chip-group v-model="status" column mandatory>
           <v-chip filter outlined @click="updateStatus(status='approved')">Aprroved</v-chip>
-          <v-chip filter outlined @click="updateStatus(status='rejected')">Rejected</v-chip>
+          <v-chip filter outlined @click="updateStatus(status='declined')">Rejected</v-chip>
         </v-chip-group>
       </v-list-item-content>
       {{status}}
@@ -31,11 +31,20 @@
 <script>
 export default {
   name: "ExpenseCard",
-  props: ["currency", "description", "created_at", "employee"],
-  data() {
-    return {
-      status: ''
-    };
+  props: ["currency", "description", "created_at", "employee", "tryme"],
+  computed: {
+    status: {
+      get: function() {
+        let toUpdate = this.tryme === "approved"? 0 : this.tryme === "declined" ? 1: ''            
+        return toUpdate
+      },
+      set: function (value){
+        console.log('setter', value);
+        
+        return value
+      }
+      
+    }
   },
   methods: {
     updateStatus(status) {

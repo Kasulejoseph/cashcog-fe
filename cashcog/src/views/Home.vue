@@ -25,6 +25,7 @@
           :currency="item.currency + ' ' + item.amount"
           :description="item.description"
           :created_at="new Date(item.created_at).toLocaleString()"
+          :tryme="item.status"
           @updateStatus="updateStatus"
         ></ExpenseCard>
       </v-col>

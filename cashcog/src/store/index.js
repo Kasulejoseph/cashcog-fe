@@ -42,6 +42,18 @@ export default new Vuex.Store({
       .catch(() => {
         
       })
+    },
+    UPDATE_EXPENSE: ({commit}, id, status) => {
+      axios.patch(`https://cashcog.herokuapp.com/${id}`, {
+        data: {
+          status
+        }
+      })
+      .then((response) => {
+
+      })
+      .catch()
+
     }
   },
   getters: {
