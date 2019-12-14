@@ -25,7 +25,8 @@
           :currency="item.currency + ' ' + item.amount"
           :description="item.description"
           :created_at="new Date(item.created_at).toLocaleString()"
-          :tryme="item.status"
+          :passStatus="item.status"
+          :item="item"
           @updateStatus="updateStatus"
         ></ExpenseCard>
       </v-col>
@@ -62,8 +63,9 @@ export default {
       const searchQuery = `${this.$store.state.searchParams}page=${value}`
       this.$store.dispatch("GET_EXPENSES", `?${searchQuery}`);
     },
-    updateStatus(status) {
+    updateStatus(statusObj) {
       console.log('statusttt', status);
+      this.$store.dispatch('UPDATE_EXPENSE', statusObj)
       
     }
   },

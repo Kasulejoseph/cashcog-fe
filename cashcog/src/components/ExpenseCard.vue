@@ -11,8 +11,8 @@
         <div class="subtitle-1 font-weight-regular" v-text="description"></div>
         <span class="mb-2 mt-3"></span>
         <v-chip-group v-model="status" column mandatory>
-          <v-chip filter outlined @click="updateStatus(status='approved')">Aprroved</v-chip>
-          <v-chip filter outlined @click="updateStatus(status='declined')">Rejected</v-chip>
+          <v-chip filter outlined @click="updateStatus({status:'declined', id:item.uuid})">Declined</v-chip>
+          <v-chip filter outlined @click="updateStatus({status:'approved', id:item.uuid})">Aprroved</v-chip>
         </v-chip-group>
       </v-list-item-content>
       {{status}}
@@ -31,24 +31,21 @@
 <script>
 export default {
   name: "ExpenseCard",
-  props: ["currency", "description", "created_at", "employee", "tryme"],
+  props: ["currency", "description", "created_at", "employee", "passStatus", "item"],
   computed: {
     status: {
-      get: function() {
-        let toUpdate = this.tryme === "approved"? 0 : this.tryme === "declined" ? 1: ''            
+      get: function() {        
+        let toUpdate = this.passStatus === "approved"? 1 : this.passStatus === "declined" ? 0: ''            
         return toUpdate
       },
       set: function (value){
-        console.log('setter', value);
-        
         return value
       }
-      
     }
   },
   methods: {
     updateStatus(status) {
-      this.$emit('updateStatus', this.status)
+      this.$emit('updateStatus', status)
     }
   }
 };
