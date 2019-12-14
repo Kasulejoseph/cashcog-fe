@@ -2,10 +2,10 @@
   <div>
     <v-row class="container2">
       <v-col cols="6" md="6" sm="0" class="mp-5 mr-5 multi-select">
-    <MultiSelect :options="options" @addTag="addTag" />
+        <MultiSelect :options="options" @addTag="addTag" />
       </v-col>
-      <v-col cols="6" md="6" sm="0" class=" ml-3 update-tag">
-      <combobox @updateTags="updateTags"></combobox>
+      <v-col cols="6" md="6" sm="0" class="ml-3 update-tag">
+        <combobox @updateTags="updateTags"></combobox>
       </v-col>
     </v-row>
   </div>
@@ -28,8 +28,14 @@ export default {
     };
   },
   components: {
-    MultiSelect: () => import(/* webpackChunkName: "multiselect" */ '@/components/SearchExpenses/MultiSelect'),
-    combobox: () => import(/* webpackChunkName: "combobox" */ "@/components/SearchExpenses/ComboBox")
+    MultiSelect: () =>
+      import(
+        /* webpackChunkName: "multiselect" */ "@/components/SearchExpenses/MultiSelect"
+      ),
+    combobox: () =>
+      import(
+        /* webpackChunkName: "combobox" */ "@/components/SearchExpenses/ComboBox"
+      )
   },
   methods: {
     addTag(newTag) {
@@ -45,7 +51,7 @@ export default {
           this.searchKeys[key].code
         }&`;
       }
-      this.$store.commit('SET_SEARCH_PARAMS', searchQuery)      
+      this.$store.commit("SET_SEARCH_PARAMS", searchQuery);
       this.$store.dispatch("GET_EXPENSES", `?${searchQuery}`);
     }
   }
@@ -56,15 +62,14 @@ export default {
 .container2 {
   display: -webkit-box;
 }
-.multi-select{
+.multi-select {
   margin-left: 20px;
   width: 47%;
 }
-.update-tag{
+.update-tag {
   width: 48%;
-
 }
 .v-input {
-    max-width: 90% !important;
+  max-width: 90% !important;
 }
 </style>

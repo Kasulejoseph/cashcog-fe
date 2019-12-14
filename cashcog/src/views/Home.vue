@@ -60,13 +60,11 @@ export default {
   },
   methods: {
     next(value) {
-      const searchQuery = `${this.$store.state.searchParams}page=${value}`
+      const searchQuery = `${this.$store.state.searchParams}page=${value}`;
       this.$store.dispatch("GET_EXPENSES", `?${searchQuery}`);
     },
     updateStatus(statusObj) {
-      console.log('statusttt', status);
-      this.$store.dispatch('UPDATE_EXPENSE', statusObj)
-      
+      this.$store.dispatch("UPDATE_EXPENSE", statusObj);
     }
   },
   computed: {
@@ -74,7 +72,7 @@ export default {
       return this.$store.getters.GET_EXPENSES;
     },
     pageCount() {
-      return this.expenses.pages
+      return this.expenses.pages;
     }
   },
   created() {
