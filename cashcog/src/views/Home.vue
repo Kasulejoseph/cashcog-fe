@@ -15,9 +15,11 @@
     <v-content>
       <HelloWorld />
       <v-row>
-        <v-col cols="4" md="4" sm="0">
-      <line-chart :chartdata="chartData" />
-
+        <v-col cols="5" md="5" sm="0">
+          <line-chart :chartdata="chartData" />
+        </v-col>
+        <v-col cols="5" md="5" sm="0">
+          <pie-chart :chartdata="pieData" />
         </v-col>
       </v-row>
       <!-- style="position: relative; height:40vh; width:80vw" -->
@@ -51,27 +53,48 @@
 </template>
 
 <script>
-import { Bar } from 'vue-chartjs'
-
 export default {
   name: "home",
-  extends: Bar,
   data() {
     return {
       page: 1,
       chartData: {
-      labels: ['January', 'February', 'March', 'April'],
-      datasets: [
-        {
-          label: 'Data One',
-          borderColor: '#f87979',
-          backgroundColor: "null",
-          fill: false,
-          data: [40, 20, 30, 15]
-        }
-      ]
-    }
-    }
+        labels: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "March",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ],
+        datasets: [
+          {
+            label: "Amount",
+            borderColor: "#f87979",
+            // backgroundColor: "null",
+            // fill: false,
+            data: [5, 20, 30, 15, 34, 24, 30, 15, 35, 38, 29, 18]
+          }
+        ]
+      },
+      pieData: {
+        labels: ["Health", "Mobility", "Energy", "Infrastructure"],
+        datasets: [
+          {
+            borderColor: "#f87979",
+            label: "Expense Chart",
+            data: [5, 20, 30, 15],
+            backgroundColor: ["#ff8527", "#ff566b", "#fcc32e", "#53b4ed"]
+          }
+        ]
+      }
+    };
   },
   components: {
     HelloWorld: () => import("@/components/HelloWorld.vue"),
@@ -79,8 +102,8 @@ export default {
       import(/* webpackChunkName: "ExpenseCard" */ "@/components/ExpenseCard"),
     SelectView: () =>
       import(/* webpackChunkName: "SelectView" */ "@/views/SelectView"),
-    LineChart: () => import('./Cart.js')
-
+    LineChart: () => import("./Cart.js"),
+    PieChart: () => import("./Pie.js")
   },
   methods: {
     next(value) {
@@ -99,9 +122,12 @@ export default {
       return this.expenses.pages;
     }
   },
+  mounted() {
+    // console.log(this);
+  },
   created() {
     this.$store.dispatch("GET_EXPENSES");
-  },
+  }
 };
 </script>
 
