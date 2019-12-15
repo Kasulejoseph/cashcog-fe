@@ -14,6 +14,13 @@
     </v-app-bar>
     <v-content>
       <HelloWorld />
+      <v-row>
+        <v-col cols="4" md="4" sm="0">
+      <line-chart :chartdata="chartData" />
+
+        </v-col>
+      </v-row>
+      <!-- style="position: relative; height:40vh; width:80vw" -->
       <div>
         <SelectView />
       </div>
@@ -44,19 +51,36 @@
 </template>
 
 <script>
+import { Bar } from 'vue-chartjs'
+
 export default {
   name: "home",
+  extends: Bar,
   data() {
     return {
-      page: 1
-    };
+      page: 1,
+      chartData: {
+      labels: ['January', 'February', 'March', 'April'],
+      datasets: [
+        {
+          label: 'Data One',
+          borderColor: '#f87979',
+          backgroundColor: "null",
+          fill: false,
+          data: [40, 20, 30, 15]
+        }
+      ]
+    }
+    }
   },
   components: {
     HelloWorld: () => import("@/components/HelloWorld.vue"),
     ExpenseCard: () =>
       import(/* webpackChunkName: "ExpenseCard" */ "@/components/ExpenseCard"),
     SelectView: () =>
-      import(/* webpackChunkName: "SelectView" */ "@/views/SelectView")
+      import(/* webpackChunkName: "SelectView" */ "@/views/SelectView"),
+    LineChart: () => import('./Cart.js')
+
   },
   methods: {
     next(value) {
@@ -77,7 +101,7 @@ export default {
   },
   created() {
     this.$store.dispatch("GET_EXPENSES");
-  }
+  },
 };
 </script>
 
