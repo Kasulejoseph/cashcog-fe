@@ -13,13 +13,15 @@
       </div>
     </v-app-bar>
     <v-content>
-      <HelloWorld />
+      <!-- <HelloWorld /> -->
       <v-row>
-        <v-col cols="5" md="5" sm="0">
-          <line-chart :chartdata="chartData" />
+        <v-col cols="6" md="6" sm="0">
+          <h1>Monthly Expenses</h1>
+          <line-chart class="graph" :chartdata="chartData" />
         </v-col>
-        <v-col cols="5" md="5" sm="0">
-          <pie-chart :chartdata="pieData" />
+        <v-col cols="6" md="6" sm="0">
+          <h1>Expenses</h1>
+          <pie-chart class="pie" :chartdata="pieData" />
         </v-col>
       </v-row>
       <!-- style="position: relative; height:40vh; width:80vw" -->
@@ -60,18 +62,18 @@ export default {
       page: 1,
       chartData: {
         labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "March",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December"
+          "Jan",
+          "Feb",
+          "May",
+          "Apr",
+          "Mar",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sept",
+          "Oct",
+          "Nov",
+          "Dec"
         ],
         datasets: [
           {
@@ -134,5 +136,18 @@ export default {
 <style lang="scss">
 .v-pagination > li .v-pagination__item--active {
   background: rgb(248, 197, 69) !important;
+}
+canvas{
+  width:90% !important;
+  height:80% !important;
+
+}
+.graph{
+  width: 100%;
+  height: 85%;
+}
+.pie{
+  width: 90%;
+  height: 90%;
 }
 </style>
