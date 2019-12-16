@@ -159,13 +159,5 @@ canvas {
 
 // media query
 @media only screen and (max-width: 600px) {
-.cards-col {
-    flex: 0 0 100%;
-    max-width: 100%;
-}
-.col-graph {
-    flex: 0 0 100%;
-    max-width: 100%;
-}
 }
 </style>
