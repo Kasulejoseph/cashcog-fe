@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import axios from "axios";
+import {get, patch }from "axios";
 
 Vue.use(Vuex);
 
@@ -21,8 +21,7 @@ export default new Vuex.Store({
   actions: {
     GET_EXPENSES: ({ commit }, query) => {
       const queryParam = query == undefined ? "" : query;
-      axios
-        .get(`https://cashcog.herokuapp.com/${queryParam}`)
+      get(`${process.env.VUE_APP_BASE_URL}${queryParam}`)
         .then(response => {
           commit("SET_EXPENSES", response.data);
         })
@@ -31,8 +30,7 @@ export default new Vuex.Store({
         });
     },
     UPDATE_EXPENSE: ({ commit }, updateObj) => {
-      axios
-        .patch(`https://cashcog.herokuapp.com/${updateObj.id}`, {
+      patch(`${process.env.VUE_APP_BASE_URL}${updateObj.id}`, {
           status: updateObj.status
         })
         .then(response => {

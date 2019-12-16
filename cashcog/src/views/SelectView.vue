@@ -72,4 +72,27 @@ export default {
 .v-input {
   max-width: 90% !important;
 }
+
+// media query
+@media only screen and (max-width: 600px) {
+  body {
+    width: 100vh;
+    height: 100vh;
+  }
+  .container2 {
+    margin-top: 8%;
+    display: flex;
+  }
+  .update-tag, .multi-select {
+    flex: 0 0 90%;
+    max-width: 90%;
+    margin-left: 5px !important;
+}
+.multiselect__tags {
+    font-size: 21px !important;
+}
+.v-application--is-ltr .v-text-field .v-label {
+    font-size: 20px;
+}
+}
 </style>
