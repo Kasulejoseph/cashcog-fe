@@ -14,7 +14,7 @@
     </v-app-bar>
     <v-content>
       <!-- <HelloWorld /> -->
-      <v-row>
+      <v-row class="chart-row">
         <v-col cols="6" md="6" sm="0">
           <h1>Monthly Expenses</h1>
           <line-chart class="graph" :chartdata="chartData" />
@@ -29,7 +29,7 @@
         <SelectView />
       </div>
     </v-content>
-    <v-row>
+    <v-row class="expense-cards">
       <v-col :key="item.id" v-for="item in expenses.data" cols="4" md="4" sm="0">
         <ExpenseCard
           :employee="item.employee.first_name"
@@ -142,6 +142,10 @@ canvas{
   height:80% !important;
 
 }
+.chart-row {
+  height: 72%;
+  margin-left: 2%;
+}
 .graph{
   width: 100%;
   height: 85%;
@@ -149,5 +153,8 @@ canvas{
 .pie{
   width: 90%;
   height: 90%;
+}
+.expense-cards {
+  margin-top: -8%;
 }
 </style>
