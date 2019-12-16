@@ -3,7 +3,7 @@
     <v-combobox
       multiple
       v-model="select"
-      label="Search Values"
+      label="Enter values corresponding to the selected search fields"
       append-icon
       chips
       deletable-chips

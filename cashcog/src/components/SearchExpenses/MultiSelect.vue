@@ -3,7 +3,7 @@
     <multiselect
       v-model="value"
       tag-placeholder="Add this as new tag"
-      placeholder="Search expenses"
+      placeholder="Search expenses by"
       label="name"
       track-by="code"
       :hide-selected="true"

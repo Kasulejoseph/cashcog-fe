@@ -104,8 +104,8 @@ export default {
       import(/* webpackChunkName: "ExpenseCard" */ "@/components/ExpenseCard"),
     SelectView: () =>
       import(/* webpackChunkName: "SelectView" */ "@/views/SelectView"),
-    LineChart: () => import("./Cart.js"),
-    PieChart: () => import("./Pie.js")
+    LineChart: () => import("@/utils/Cart.js"),
+    PieChart: () => import("@/utils/Pie.js")
   },
   methods: {
     next(value) {
