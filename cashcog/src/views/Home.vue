@@ -137,20 +137,19 @@ export default {
 .v-pagination > li .v-pagination__item--active {
   background: rgb(248, 197, 69) !important;
 }
-canvas{
-  width:90% !important;
-  height:80% !important;
-
+canvas {
+  width: 90% !important;
+  height: 80% !important;
 }
 .chart-row {
   height: 72%;
   margin-left: 2%;
 }
-.graph{
+.graph {
   width: 100%;
   height: 85%;
 }
-.pie{
+.pie {
   width: 90%;
   height: 90%;
 }

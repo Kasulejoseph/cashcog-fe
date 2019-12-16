@@ -1,15 +1,15 @@
-import { Line } from 'vue-chartjs'
+import { Line } from "vue-chartjs";
 
 export default {
   extends: Line,
-  name: 'LineChart',
+  name: "LineChart",
   props: {
     chartdata: {
       type: Object,
       default: null
-    },
+    }
   },
-  mounted () {
-    this.renderChart(this.chartdata, this.options)
+  mounted() {
+    this.renderChart(this.chartdata, this.options);
   }
 };
