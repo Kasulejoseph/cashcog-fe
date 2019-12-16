@@ -15,11 +15,11 @@
     <v-content>
       <!-- <HelloWorld /> -->
       <v-row class="chart-row">
-        <v-col cols="6" md="6" sm="0">
+        <v-col class="col-graph" cols="6" md="6" sm="0">
           <h1>Monthly Expenses</h1>
           <line-chart class="graph" :chartdata="chartData" />
         </v-col>
-        <v-col cols="6" md="6" sm="0">
+        <v-col class="col-graph" cols="6" md="6" sm="0">
           <h1>Expenses</h1>
           <pie-chart class="pie" :chartdata="pieData" />
         </v-col>
@@ -30,7 +30,7 @@
       </div>
     </v-content>
     <v-row class="expense-cards">
-      <v-col :key="item.id" v-for="item in expenses.data" cols="4" md="4" sm="0">
+      <v-col class="cards-col" :key="item.id" v-for="item in expenses.data" cols="4" md="4" sm="0">
         <ExpenseCard
           :employee="item.employee.first_name"
           :currency="item.currency + ' ' + item.amount"
@@ -155,5 +155,17 @@ canvas {
 }
 .expense-cards {
   margin-top: -8%;
+}
+
+// media query
+@media only screen and (max-width: 600px) {
+.cards-col {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.col-graph {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
 }
 </style>
