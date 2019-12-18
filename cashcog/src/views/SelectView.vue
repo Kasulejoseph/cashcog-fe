@@ -1,11 +1,14 @@
 <template>
   <div>
     <v-row class="container2">
-      <v-col cols="6" md="6" sm="0" class="mp-5 mr-5 multi-select">
+      <v-col cols="4" md="4" sm="0" class="mp-5 mr-5 multi-select">
         <MultiSelect :options="options" @addTag="addTag" />
       </v-col>
-      <v-col cols="6" md="6" sm="0" class="ml-3 update-tag">
+      <v-col cols="4" md="4" sm="0" class="ml-3 update-tag">
         <combobox @updateTags="updateTags"></combobox>
+      </v-col>
+      <v-col cols="5" md="5" sm="0" class="ml-3 sort-container">
+        <sortbox @orderSelected="orderSelected" @sortSelected="sortSelected" :radioValue="radioValue"></sortbox>
       </v-col>
     </v-row>
   </div>
@@ -19,6 +22,7 @@ export default {
       select: [],
       items: [],
       searchKeys: [],
+      radioValue: "",
       options: [
         { name: "Currency", code: "00" },
         { name: "Amount", code: "01" },
@@ -32,12 +36,39 @@ export default {
       import(
         /* webpackChunkName: "multiselect" */ "@/components/SearchExpenses/MultiSelect"
       ),
+    sortbox: () =>
+      import(
+        /* webpackChunkName: "sortbox" */ "@/components/SearchExpenses/SortSelect"
+      ),
     combobox: () =>
       import(
         /* webpackChunkName: "combobox" */ "@/components/SearchExpenses/ComboBox"
       )
   },
   methods: {
+    orderSelected(value) {
+      this.sortOrder = value;
+      const checkSort = value === "Ascending" ? 'asc' : 'desc'
+      if (this.radioValue) {
+        const sortby = `sort=${this.radioValue}:${checkSort}`;
+        const searchQuery = this.$store.state.searchParams + sortby
+        this.$store.dispatch("GET_EXPENSES", `?${searchQuery}`);
+      }
+    },
+    sortSelected(value) {
+      this.radioValue = value
+      
+      if (this.sortOrder === "Ascending") {
+        const sortby = `sort=${value}:asc`;
+        const searchQuery = this.$store.state.searchParams + sortby
+        this.$store.dispatch("GET_EXPENSES", `?${searchQuery}`);
+      }
+      if (this.sortOrder === "Descending") {
+        const sortby = `sort=${value}:desc`;
+        const searchQuery = this.$store.state.searchParams + sortby
+        this.$store.dispatch("GET_EXPENSES", `?${searchQuery}`);
+      }
+    },
     addTag(newTag) {
       this.searchKeys = [...newTag];
     },
@@ -75,6 +106,5 @@ export default {
 
 // media query
 @media only screen and (max-width: 600px) {
-
 }
 </style>
