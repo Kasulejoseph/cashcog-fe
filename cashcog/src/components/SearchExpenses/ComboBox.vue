@@ -3,7 +3,7 @@
     <v-combobox
       multiple
       v-model="select"
-      label="Enter values corresponding to the selected search fields"
+      label="Corresponding values"
       append-icon
       prepend-icon="mdi-square-edit-outline"
       chips

@@ -7,7 +7,7 @@
       <v-col cols="4" md="4" sm="0" class="ml-3 update-tag">
         <combobox @updateTags="updateTags"></combobox>
       </v-col>
-      <v-col cols="5" md="5" sm="0" class="ml-3">
+      <v-col cols="5" md="5" sm="0" class="ml-3 sort-container">
         <sortbox @orderSelected="orderSelected" @sortSelected="sortSelected" :radioValue="radioValue"></sortbox>
       </v-col>
     </v-row>
