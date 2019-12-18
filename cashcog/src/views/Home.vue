@@ -29,7 +29,7 @@
         <SelectView />
       </div>
     </v-content>
-    <v-row class="expense-cards">
+    <v-row class="expense-cards" v-if="expenses.data">
       <v-col class="cards-col" :key="item.id" v-for="item in expenses.data" cols="4" md="4" sm="0">
         <ExpenseCard
           :employee="item.employee.first_name"
@@ -51,10 +51,14 @@
         @input="next"
       ></v-pagination>
     </v-row>
+    <div v-else>
+      <PageLoader />
+    </div>
   </v-app>
 </template>
 
 <script>
+import PageLoader from "@/components/PageLoader"
 export default {
   name: "home",
   data() {
@@ -105,7 +109,8 @@ export default {
     SelectView: () =>
       import(/* webpackChunkName: "SelectView" */ "@/views/SelectView"),
     LineChart: () => import("@/utils/Cart.js"),
-    PieChart: () => import("@/utils/Pie.js")
+    PieChart: () => import("@/utils/Pie.js"),
+    PageLoader
   },
   methods: {
     next(value) {
