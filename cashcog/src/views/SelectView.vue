@@ -47,7 +47,6 @@ export default {
   },
   methods: {
     orderSelected(value) {
-      console.log(this.$store.state.searchParams);
       this.sortOrder = value;
       const checkSort = value === "Ascending" ? 'asc' : 'desc'
       if (this.radioValue) {

@@ -5,7 +5,7 @@
       v-model="select"
       label="Enter values corresponding to the selected search fields"
       append-icon
-      prepend-icon="mdi-pencil"
+      prepend-icon="mdi-square-edit-outline"
       chips
       deletable-chips
       class="tag-input"
