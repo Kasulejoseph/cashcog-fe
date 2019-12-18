@@ -1,15 +1,16 @@
 <template>
   <div>
-    <v-col>
+    <v-col class="sortItem">
       <v-select
-        class="yy"
+        class="sort-select"
         :items="SortItems"
         @change="orderSelected"
         label="Sort By"
+        width="151px"
         dense
         outlined
       ></v-select>
-      <v-radio-group v-model="radios" @change="sortSelected" row>
+      <v-radio-group v-model="radios" @change="sortSelected" row class="sort-radio">
         <v-radio label="Date" value="created_at"></v-radio>
         <v-radio label="Amount" value="amount"></v-radio>
       </v-radio-group>
@@ -40,5 +41,18 @@ props: ['radioValue'],
 };
 </script>
 
-<style lang="scss" scoped>
+<style>
+.sortItem{
+    display: flex;
+}
+.v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot {
+width: 150px;
+}
+.sort-select{
+    margin-top: 7px !important;
+    max-width: fit-content;
+}
+.sort-radio{
+    padding-left: 10px;
+}
 </style>
