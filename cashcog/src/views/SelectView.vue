@@ -1,11 +1,22 @@
 <template>
   <div>
     <v-row class="container2">
-      <v-col cols="6" md="6" sm="0" class="mp-5 mr-5 multi-select">
+      <v-col cols="3" md="3" sm="0" class="mp-5 mr-5 multi-select">
         <MultiSelect :options="options" @addTag="addTag" />
       </v-col>
-      <v-col cols="6" md="6" sm="0" class="ml-3 update-tag">
+      <v-col cols="3" md="3" sm="0" class="ml-3 update-tag">
         <combobox @updateTags="updateTags"></combobox>
+      </v-col>
+      <v-col cols="5" md="5" sm="0" class="ml-3">
+        <v-col>
+          <v-select class="yy" :items="SortItems" @change="sortSelected" label="Sort By" dense outlined></v-select>
+          <v-radio-group v-model="radios" @change="sortSelected" row>
+            {{radios || null}}
+            <v-radio label="Date" value="created_at"></v-radio>
+            <v-radio label="Amount" value="amount"></v-radio>
+          </v-radio-group>
+        </v-col>
+        <v-col></v-col>
       </v-col>
     </v-row>
   </div>
@@ -18,7 +29,10 @@ export default {
     return {
       select: [],
       items: [],
+      SortItems: ["Ascending", "Descending"],
+      radios: "",
       searchKeys: [],
+      row: null,
       options: [
         { name: "Currency", code: "00" },
         { name: "Amount", code: "01" },
@@ -38,6 +52,19 @@ export default {
       )
   },
   methods: {
+    sortSelected(value) {
+      console.log(value);
+      
+      if(value === 'Ascending') {
+        const sortby = 'sort=amount:asc'
+        this.$store.dispatch("GET_EXPENSES", `?${sortby}`);
+      }
+      if(value === 'Descending') {
+        const sortby = 'sort=amount:desc'
+        this.$store.dispatch("GET_EXPENSES", `?${sortby}`);
+      }
+
+    },
     addTag(newTag) {
       this.searchKeys = [...newTag];
     },
@@ -75,6 +102,5 @@ export default {
 
 // media query
 @media only screen and (max-width: 600px) {
-
 }
 </style>
