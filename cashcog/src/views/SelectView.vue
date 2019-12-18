@@ -8,14 +8,7 @@
         <combobox @updateTags="updateTags"></combobox>
       </v-col>
       <v-col cols="5" md="5" sm="0" class="ml-3">
-        <v-col>
-          <v-select class="yy" :items="SortItems" @change="orderSelected" label="Sort By" dense outlined></v-select>
-          <v-radio-group v-model="radios" @change="sortSelected" row>
-            <v-radio label="Date" value="created_at"></v-radio>
-            <v-radio label="Amount" value="amount"></v-radio>
-          </v-radio-group>
-        </v-col>
-        <v-col></v-col>
+        <sortbox @orderSelected="orderSelected" @sortSelected="sortSelected" :radioValue="radioValue"></sortbox>
       </v-col>
     </v-row>
   </div>
@@ -28,11 +21,8 @@ export default {
     return {
       select: [],
       items: [],
-      SortItems: ["Ascending", "Descending"],
-      radios: "",
       searchKeys: [],
-      sortOrder: "",
-      row: null,
+      radioValue: "",
       options: [
         { name: "Currency", code: "00" },
         { name: "Amount", code: "01" },
@@ -46,6 +36,10 @@ export default {
       import(
         /* webpackChunkName: "multiselect" */ "@/components/SearchExpenses/MultiSelect"
       ),
+    sortbox: () =>
+      import(
+        /* webpackChunkName: "sortbox" */ "@/components/SearchExpenses/SortSelect"
+      ),
     combobox: () =>
       import(
         /* webpackChunkName: "combobox" */ "@/components/SearchExpenses/ComboBox"
@@ -53,21 +47,28 @@ export default {
   },
   methods: {
     orderSelected(value) {
-      this.sortOrder = value
+      console.log(this.$store.state.searchParams);
+      this.sortOrder = value;
+      const checkSort = value === "Ascending" ? 'asc' : 'desc'
+      if (this.radioValue) {
+        const sortby = `sort=${this.radioValue}:${checkSort}`;
+        const searchQuery = this.$store.state.searchParams + sortby
+        this.$store.dispatch("GET_EXPENSES", `?${searchQuery}`);
+      }
     },
-
     sortSelected(value) {
-      console.log(value);
+      this.radioValue = value
       
-      if(this.sortOrder === 'Ascending') {
-        const sortby = `sort=${value}:asc`
-        this.$store.dispatch("GET_EXPENSES", `?${sortby}`);
+      if (this.sortOrder === "Ascending") {
+        const sortby = `sort=${value}:asc`;
+        const searchQuery = this.$store.state.searchParams + sortby
+        this.$store.dispatch("GET_EXPENSES", `?${searchQuery}`);
       }
-      if(this.sortOrder === 'Descending') {
-        const sortby = `sort=${value}:desc`
-        this.$store.dispatch("GET_EXPENSES", `?${sortby}`);
+      if (this.sortOrder === "Descending") {
+        const sortby = `sort=${value}:desc`;
+        const searchQuery = this.$store.state.searchParams + sortby
+        this.$store.dispatch("GET_EXPENSES", `?${searchQuery}`);
       }
-
     },
     addTag(newTag) {
       this.searchKeys = [...newTag];
