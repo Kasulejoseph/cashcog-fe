@@ -9,9 +9,8 @@
       </v-col>
       <v-col cols="5" md="5" sm="0" class="ml-3">
         <v-col>
-          <v-select class="yy" :items="SortItems" @change="sortSelected" label="Sort By" dense outlined></v-select>
+          <v-select class="yy" :items="SortItems" @change="orderSelected" label="Sort By" dense outlined></v-select>
           <v-radio-group v-model="radios" @change="sortSelected" row>
-            {{radios || null}}
             <v-radio label="Date" value="created_at"></v-radio>
             <v-radio label="Amount" value="amount"></v-radio>
           </v-radio-group>
@@ -32,6 +31,7 @@ export default {
       SortItems: ["Ascending", "Descending"],
       radios: "",
       searchKeys: [],
+      sortOrder: "",
       row: null,
       options: [
         { name: "Currency", code: "00" },
@@ -52,15 +52,19 @@ export default {
       )
   },
   methods: {
+    orderSelected(value) {
+      this.sortOrder = value
+    },
+
     sortSelected(value) {
       console.log(value);
       
-      if(value === 'Ascending') {
-        const sortby = 'sort=amount:asc'
+      if(this.sortOrder === 'Ascending') {
+        const sortby = `sort=${value}:asc`
         this.$store.dispatch("GET_EXPENSES", `?${sortby}`);
       }
-      if(value === 'Descending') {
-        const sortby = 'sort=amount:desc'
+      if(this.sortOrder === 'Descending') {
+        const sortby = `sort=${value}:desc`
         this.$store.dispatch("GET_EXPENSES", `?${sortby}`);
       }
 
