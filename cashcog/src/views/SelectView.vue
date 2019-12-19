@@ -104,7 +104,4 @@ export default {
   max-width: 90% !important;
 }
 
-// media query
-@media only screen and (max-width: 600px) {
-}
 </style>

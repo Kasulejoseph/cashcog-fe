@@ -14,7 +14,6 @@
       </div>
     </v-app-bar>
     <v-content>
-      <!-- <HelloWorld /> -->
       <v-row class="chart-row">
         <v-col class="col-graph" cols="6" md="6" sm="0">
           <h1>Monthly Expenses</h1>
@@ -25,7 +24,6 @@
           <pie-chart class="pie" :chartdata="pieData" />
         </v-col>
       </v-row>
-      <!-- style="position: relative; height:40vh; width:80vw" -->
       <div>
         <SelectView />
       </div>
@@ -104,7 +102,6 @@ export default {
     };
   },
   components: {
-    HelloWorld: () => import("@/components/HelloWorld.vue"),
     ExpenseCard: () =>
       import(/* webpackChunkName: "ExpenseCard" */ "@/components/ExpenseCard"),
     SelectView: () =>
@@ -172,7 +169,4 @@ canvas {
     border-color: #53b4ed;
 }
 
-// media query
-@media only screen and (max-width: 600px) {
-}
 </style>
