@@ -9,6 +9,7 @@
         width="151px"
         dense
         outlined
+        color = "#53b4ed"
       ></v-select>
       <v-radio-group v-model="radios" @change="sortSelected" row class="sort-radio">
         <v-radio label="Date" value="created_at"></v-radio>

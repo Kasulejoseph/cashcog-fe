@@ -83,7 +83,7 @@ export default {
         datasets: [
           {
             label: "Amount",
-            borderColor: "#f87979",
+            borderColor: "#53b4ed",
             // backgroundColor: "null",
             // fill: false,
             data: [5, 20, 30, 15, 34, 24, 30, 15, 35, 38, 29, 18]
@@ -94,7 +94,7 @@ export default {
         labels: ["Health", "Mobility", "Energy", "Infrastructure"],
         datasets: [
           {
-            borderColor: "#f87979",
+            borderColor: "#FEC42E",
             label: "Expense Chart",
             data: [5, 20, 30, 15],
             backgroundColor: ["#ff8527", "#ff566b", "#fcc32e", "#53b4ed"]
@@ -161,6 +161,15 @@ canvas {
 }
 .expense-cards {
   margin-top: -8%;
+}
+.theme--light.v-text-field--outlined fieldset {
+    border-color: #53b4ed;
+}
+.multiselect__tags {
+    border: 1px solid #53b4ed;
+}
+.theme--light.v-text-field > .v-input__control > .v-input__slot:before {
+    border-color: #53b4ed;
 }
 
 // media query

@@ -1,92 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <link rel="icon" href="<%= BASE_URL %>expense-icon.png" />
-    <title>cashcog</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css"
-    />
-  </head>
 
-  <body>
-    <noscript>
-      <strong
-        >We're sorry but cashcog doesn't work properly without JavaScript
-        enabled. Please enable it to continue.</strong
-      >
-    </noscript>
-    <script type="text/javascript" src="../src/assets/style.js"></script>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-    <style>
-      @media only screen and (max-width: 600px) {
-        .cards-col {
-          flex: 0 0 100%;
-          max-width: 100%;
-        }
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <link rel="icon" href="<%= BASE_URL %>expense-icon.png" />
+  <title>cashcog</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/vue-multiselect@2.1.0/dist/vue-multiselect.min.css" />
+</head>
 
-        .col-graph {
-          flex: 0 0 100%;
-          max-width: 100%;
-          margin-top: auto;
-        }
+<body>
+  <noscript>
+    <strong>We're sorry but cashcog doesn't work properly without JavaScript
+      enabled. Please enable it to continue.</strong>
+  </noscript>
+  <script type="text/javascript" src="../src/assets/style.js"></script>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+  <style>
+    @media only screen and (max-width: 600px) {
+      .cards-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
 
-        /* select view */
-        /* body {
+      .col-graph {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-top: auto;
+      }
+
+      /* select view */
+      /* body {
         width: 100vh;
         height: 100vh;
       } */
 
-        .container2 {
-          margin-top: 8%;
-          display: flex !important;
-        }
-
-        .update-tag,
-        .multi-select {
-          flex: 0 0 90%;
-          max-width: 90%;
-        }
-
-        .multiselect__tags {
-          font-size: 21px !important;
-        }
-
-        .v-application--is-ltr .v-text-field .v-label {
-          font-size: 15px;
-        }
-
-        .v-slide-group__content {
-          display: contents;
-        }
-        .v-text-field {
-          padding-top: 12px;
-        }
-
-        .sort-container.col-5 {
-          display: contents;
-          flex: 0 0 -1% !important;
-          max-width: 0;
-        }
-        .sortItem {
-          margin-left: 18px;
-        }
-        .expense-cards {
-          margin-top: 0%;
-        }
+      .container2 {
+        margin-top: 8%;
+        display: flex !important;
       }
-    </style>
-  </body>
+
+      .update-tag,
+      .multi-select {
+        flex: 0 0 90%;
+        max-width: 90%;
+      }
+
+      .multiselect__tags {
+        font-size: 21px !important;
+      }
+
+      .v-application--is-ltr .v-text-field .v-label {
+        font-size: 15px;
+      }
+
+      .v-slide-group__content {
+        display: contents;
+      }
+
+      .v-text-field {
+        padding-top: 12px;
+      }
+
+      .sort-container.col-5 {
+        display: contents;
+        flex: 0 0 -1% !important;
+        max-width: 0;
+      }
+
+      .sortItem {
+        margin-left: 18px;
+      }
+
+      .expense-cards {
+        margin-top: 0%;
+      }
+
+      .v-app-bar.v-app-bar--fixed {
+        position: inherit;
+      }
+    }
+  </style>
+</body>
+
 </html>
