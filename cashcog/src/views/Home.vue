@@ -10,6 +10,7 @@
           transition="scale-transition"
           width="40"
         />
+        <span style="font-size: 28px">Expense Manager</span>
       </div>
     </v-app-bar>
     <v-content>

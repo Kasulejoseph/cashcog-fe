@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" style="margin-bottom: 70px">
     <v-progress-linear
             color="#FEC42E"
             indeterminate
