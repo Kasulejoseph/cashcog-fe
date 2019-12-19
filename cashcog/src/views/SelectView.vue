@@ -26,8 +26,7 @@ export default {
       options: [
         { name: "Currency", code: "00" },
         { name: "Amount", code: "01" },
-        { name: "status", code: "02" },
-        { name: "Employee", code: "03" }
+        { name: "Status", code: "02" },
       ]
     };
   },
@@ -104,7 +103,4 @@ export default {
   max-width: 90% !important;
 }
 
-// media query
-@media only screen and (max-width: 600px) {
-}
 </style>

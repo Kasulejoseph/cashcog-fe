@@ -23,7 +23,7 @@
           color="#FEC42E"
           text-color="green"
           @click="updateStatus({status:'approved', id:item.uuid})"
-        >Aprroved</v-chip>
+        >Approved</v-chip>
       </v-chip-group>
       <v-spacer></v-spacer>
       <v-card-subtitle class="text-sm-left" v-text="created_at"></v-card-subtitle>

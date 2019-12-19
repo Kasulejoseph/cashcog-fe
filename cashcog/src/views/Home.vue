@@ -10,10 +10,10 @@
           transition="scale-transition"
           width="40"
         />
+        <span style="font-size: 28px">Expense Manager</span>
       </div>
     </v-app-bar>
     <v-content>
-      <!-- <HelloWorld /> -->
       <v-row class="chart-row">
         <v-col class="col-graph" cols="6" md="6" sm="0">
           <h1>Monthly Expenses</h1>
@@ -24,12 +24,11 @@
           <pie-chart class="pie" :chartdata="pieData" />
         </v-col>
       </v-row>
-      <!-- style="position: relative; height:40vh; width:80vw" -->
       <div>
         <SelectView />
       </div>
     </v-content>
-    <v-row class="expense-cards">
+    <v-row class="expense-cards" v-if="expenses.data">
       <v-col class="cards-col" :key="item.id" v-for="item in expenses.data" cols="4" md="4" sm="0">
         <ExpenseCard
           :employee="item.employee.first_name"
@@ -51,10 +50,14 @@
         @input="next"
       ></v-pagination>
     </v-row>
+    <div v-else>
+      <PageLoader />
+    </div>
   </v-app>
 </template>
 
 <script>
+import PageLoader from "@/components/PageLoader"
 export default {
   name: "home",
   data() {
@@ -78,7 +81,7 @@ export default {
         datasets: [
           {
             label: "Amount",
-            borderColor: "#f87979",
+            borderColor: "#53b4ed",
             // backgroundColor: "null",
             // fill: false,
             data: [5, 20, 30, 15, 34, 24, 30, 15, 35, 38, 29, 18]
@@ -89,7 +92,7 @@ export default {
         labels: ["Health", "Mobility", "Energy", "Infrastructure"],
         datasets: [
           {
-            borderColor: "#f87979",
+            borderColor: "#FEC42E",
             label: "Expense Chart",
             data: [5, 20, 30, 15],
             backgroundColor: ["#ff8527", "#ff566b", "#fcc32e", "#53b4ed"]
@@ -99,13 +102,13 @@ export default {
     };
   },
   components: {
-    HelloWorld: () => import("@/components/HelloWorld.vue"),
     ExpenseCard: () =>
       import(/* webpackChunkName: "ExpenseCard" */ "@/components/ExpenseCard"),
     SelectView: () =>
       import(/* webpackChunkName: "SelectView" */ "@/views/SelectView"),
     LineChart: () => import("@/utils/Cart.js"),
-    PieChart: () => import("@/utils/Pie.js")
+    PieChart: () => import("@/utils/Pie.js"),
+    PageLoader
   },
   methods: {
     next(value) {
@@ -156,8 +159,14 @@ canvas {
 .expense-cards {
   margin-top: -8%;
 }
-
-// media query
-@media only screen and (max-width: 600px) {
+.theme--light.v-text-field--outlined fieldset {
+    border-color: #53b4ed !important;
 }
+.multiselect__tags {
+    border: 1px solid #53b4ed !important;
+}
+.theme--light.v-text-field > .v-input__control > .v-input__slot:before {
+    border-color: #53b4ed !important;
+}
+
 </style>
