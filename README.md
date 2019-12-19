@@ -1,1 +1,1 @@
-# cashcog-fe
+# cashcog frontend
