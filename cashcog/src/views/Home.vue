@@ -160,13 +160,13 @@ canvas {
   margin-top: -8%;
 }
 .theme--light.v-text-field--outlined fieldset {
-    border-color: #53b4ed;
+    border-color: #53b4ed !important;
 }
 .multiselect__tags {
-    border: 1px solid #53b4ed;
+    border: 1px solid #53b4ed !important;
 }
 .theme--light.v-text-field > .v-input__control > .v-input__slot:before {
-    border-color: #53b4ed;
+    border-color: #53b4ed !important;
 }
 
 </style>
