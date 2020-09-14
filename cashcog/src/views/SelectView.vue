@@ -1,10 +1,10 @@
 <template>
   <div>
     <v-row class="container2">
-      <v-col cols="4" md="4" sm="0" class="mp-5 mr-5 multi-select">
+      <v-col cols="4" md="3" sm="0" class="mp-5 mr-5 multi-select">
         <MultiSelect :options="options" @addTag="addTag" />
       </v-col>
-      <v-col cols="4" md="4" sm="0" class="ml-3 update-tag">
+      <v-col cols="4" md="3" sm="0" class="ml-3 update-tag">
         <combobox @updateTags="updateTags"></combobox>
       </v-col>
       <v-col cols="5" md="5" sm="0" class="ml-3 sort-container">
